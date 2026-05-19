@@ -170,8 +170,7 @@ modprobe uinput || true
 cat > /etc/systemd/system/waveshare-joystick-mouse.service <<'EOF'
 [Unit]
 Description=Waveshare LCD HAT joystick as mouse
-After=graphical.target
-Wants=graphical.target
+After=multi-user.target
 
 [Service]
 Type=simple
@@ -180,7 +179,7 @@ Restart=always
 RestartSec=2
 
 [Install]
-WantedBy=graphical.target
+WantedBy=multi-user.target
 EOF
 systemctl daemon-reload
 systemctl enable waveshare-joystick-mouse.service
